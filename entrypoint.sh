@@ -5,7 +5,4 @@ ENV_FILE="$2"
 
 echo "Running torque plan environment command"
 
-command="/Quali.Torque.Cli/torque eac plan ${ENV_ID}"
-echo "The following command will be executed: ${command}"
-
-eval $command
+/Quali.Torque.Cli/torque eac plan ${ENV_ID}
