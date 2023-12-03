@@ -1,4 +1,4 @@
-FROM qtorque/torque-cli:1.8
+FROM quali/torque-cli:2.4.4-beta
 
 COPY entrypoint.sh /entrypoint.sh
 
