@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 ENV_ID="$1"
 ENV_FILE="$2"
