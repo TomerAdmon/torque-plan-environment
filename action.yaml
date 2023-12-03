@@ -1,17 +1,12 @@
-name: "Start Torque Environment"
-description: "Starts an Environment in Torque and returns its details"
+name: "Plan Torque Environment"
+description: "Plan an Environment in Torque vs a running environment"
 author: "Quali"
 inputs:
   space:
     description: "The Torque space to start the environment in"
     required: true
-  blueprint_name:
-    description: "The name of the Blueprint to use"
-    required: true
-  repository_name:
-    description: "The Blueprint repository name"
-  environment_name:
-    description: "Provide a name for the Environment"
+  environment_id:
+    description: "Provide a id for the Environment"
     required: false
   torque_token:
     description: "A Torque longterm token"
@@ -20,46 +15,19 @@ inputs:
     description: "Alternative Torque server url"
     required: false
     default: portal.qtorque.io
-  branch:
-    description: "Use the Blueprint version from a remote Git branch"
-    required: false
-    default: ""
-  duration:
-    description: "The Environment will automatically de-provision at the end of the provided duration (minutes)"
-    required: false
-    default: "120"
-  timeout:
-    description: "Set the time (minutes) to wait for the environment to become active. When setting to 0 the action will end with just the Environment ID output."
-    required: false
-    default: 0
-  inputs:
-    required: false
-    description: "A comma-separated list of key=value pairs. For example: key1=value1, key2=value2"
-    default: ""
-
-outputs:
-  environment_id:
-    description: "The ID of launched Torque Environment"
-  environment_details:
-    description: "The Full Environment details in a json format"
 
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.blueprint_name }}
-    - ${{ inputs.repository_name }}
-    - ${{ inputs.environment_name }}
-    - ${{ inputs.branch }}
-    - ${{ inputs.duration }}
-    - ${{ inputs.timeout }}
-    - ${{ inputs.inputs }}
+    - ${{ inputs.environment_id }}
 
   env:
     TORQUE_TOKEN: ${{ inputs.torque_token }}
     TORQUE_SPACE: ${{ inputs.space }}
     TORQUE_HOSTNAME: ${{ inputs.torque_hostname }}
-    TORQUE_USERAGENT: Torque-Plugin-Github-Start-Environment-Action/v1
+    TORQUE_USERAGENT: Torque-Plugin-Github-Plan-Environment-Action/v1
+    TORQUE_URL: ${{ inputs.torque_hostname }} 
 
 branding:
   icon: "play-circle"
