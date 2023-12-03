@@ -8,6 +8,9 @@ inputs:
   environment_id:
     description: "Provide a id for the Environment"
     required: false
+  env_file_path:
+    description: "Path to new environment YAML"
+    required: false
   torque_token:
     description: "A Torque longterm token"
     required: true
@@ -21,6 +24,7 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.environment_id }}
+    - ${{ inputs.env_file_path}}
 
   env:
     TORQUE_TOKEN: ${{ inputs.torque_token }}
