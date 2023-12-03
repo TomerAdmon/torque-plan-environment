@@ -5,8 +5,7 @@ ENV_FILE="$2"
 
 echo "Running torque plan environment command"
 
-command="cat ${ENV_FILE} | grep cloud"
+command="cat ${ENV_FILE} | /Quali.Torque.Cli/torque eac plan ${ENV_ID}"
 echo "this is the command: $command"
 
 eval $command
-
