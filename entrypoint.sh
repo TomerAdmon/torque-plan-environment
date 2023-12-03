@@ -5,4 +5,7 @@ ENV_FILE="$2"
 
 echo "Running torque plan environment command"
 
-/Quali.Torque.Cli/torque eac plan
+command="cat ${ENV_FILE} | /Quali.Torque.Cli/torque eac plan ${ENV_ID}"
+
+eval $command
+
