@@ -19,6 +19,10 @@ inputs:
     required: false
     default: portal.qtorque.io
 
+outputs:
+  plan_result:
+    description: "The plan result from Torque"
+    
 runs:
   using: "docker"
   image: "Dockerfile"
