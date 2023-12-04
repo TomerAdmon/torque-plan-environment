@@ -17,4 +17,5 @@ echo "-------------"
 plan_result=$(cat result.txt | grep -i "Plan: ")
   
 echo "Writing data to outputs"
+echo "plan_result=${plan_result}"
 echo "plan_result=${plan_result}" >> $GITHUB_OUTPUT
